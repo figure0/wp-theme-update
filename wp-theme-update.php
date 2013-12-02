@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP Theme Update
 Plugin URI: https://github.com/rafacesar/wp-theme-update
-Version: 1.0.1
+Version: 1.0.2
 */
 
 
@@ -118,8 +118,13 @@ function custom_theme_updater_download_package( $false, $url, $instance ) {
 
 	$instance->skin->feedback('downloading_package', $url);
 	
+	$tema = @$instance->skin->theme_info->template;
+	
+	if(!isset($tema))
+		$tema = @$instance->skin->theme;
+	
 	//Here is my change
-	$url = apply_filters('custom_theme_updater_download_url', $url, $instance->skin->theme_info->template);
+	$url = apply_filters('custom_theme_updater_download_url', $url, $tema);
 	
 	$download_file = download_url($url);
 
