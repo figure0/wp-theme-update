@@ -2,8 +2,9 @@
 /*
 Plugin Name: WP Theme Update
 Plugin URI: https://github.com/rafacesar/wp-theme-update
-Version: 1.0.0
+Version: 1.0.1
 */
+
 
 
 //Adding new header param to the stylesheet meta information
@@ -37,13 +38,14 @@ function custom_theme_updater_searcher($data) {
 		//Theme version
 		$version = $theme->version;
 		
-		$function_path = WP_CONTENT_DIR . '/themes/' . $theme_id . '/functions.php';
+		$function_path = WP_CONTENT_DIR . '/themes/' . $theme_id . '/update.php';
 		
 		if( file_exists($function_path) ) {
 			include_once($function_path);
 		}
 		else
-			error_log('functions.php Not Found.');
+			error_log('update.php Not Found.');
+		
 		
 		
 		//If needed some adjust to the request URL (e.g. Login info)
@@ -117,7 +119,7 @@ function custom_theme_updater_download_package( $false, $url, $instance ) {
 	$instance->skin->feedback('downloading_package', $url);
 	
 	//Here is my change
-	$url = apply_filters('custom_theme_updater_download_url', $url, $instance->skin->theme);
+	$url = apply_filters('custom_theme_updater_download_url', $url, $instance->skin->theme_info->template);
 	
 	$download_file = download_url($url);
 
