@@ -2,10 +2,10 @@
 /*
 Plugin Name: WP Theme Update
 Plugin URI: https://github.com/rafacesar/wp-theme-update
-Version: 1.0.2
+Version: 1.0.3
 */
 
-
+//Insert 'Custom Update URI' as a field in the top of your style.css
 
 //Adding new header param to the stylesheet meta information
 add_action( 'extra_theme_headers', 'custom_theme_updater_url_header' );
