@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP Theme Update
 Plugin URI: https://github.com/rafacesar/wp-theme-update
-Version: 1.0.3
+Version: 1.0.4
 */
 
 //Insert 'Custom Update URI' as a field in the top of your style.css
